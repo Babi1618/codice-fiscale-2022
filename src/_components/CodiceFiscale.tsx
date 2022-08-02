@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Sesso from './Sesso'
 import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css";
 
 const CodiceFiscale = () => {
 	const [startDate, setStartDate] = useState(new Date());
