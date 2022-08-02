@@ -1,14 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import CodiceFiscale from './CodiceFiscale/CodiceFiscale';
+import CodiceFiscale from './_components/CodiceFiscale';
 
 function App() {
 	return (
-		<div className="container">
-			<div className="row">
-				<CodiceFiscale />
-			</div>
+		<div >
+			<CodiceFiscale />
 		</div>
 
 	);
