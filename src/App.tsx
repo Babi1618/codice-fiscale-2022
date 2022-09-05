@@ -1,21 +1,18 @@
 import './App.css';
+import moment from 'moment'
+import { useEffect } from 'react';
+import { useCalcolaCodiceFiscale } from './_hooks/useCalcolaCodiceFiscale';
 
 function App() {
 
-	const persona1 = {
-		nome: "Gino",
-		cognome: "Rossi",
-		sesso: "M",
-		dataNascita: "93/03/12",
-		codiceCatastaleNascita: "A944",
-	}
-
-	const today = new Date()
-	console.log(today)
+	const { codiceFiscale_calcolato } = useCalcolaCodiceFiscale()
+	useEffect(() => {
+		console.log(codiceFiscale_calcolato())
+	}, [])
 
 	return (
-		<div >
-		</div>
+		< >
+		</>
 
 	);
 }
