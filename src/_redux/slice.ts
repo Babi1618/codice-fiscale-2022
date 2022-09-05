@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 const sliceName = "codiceFiscale"
+
 export const codiceFiscaleSlice = createSlice({
 	name: sliceName,
 	initialState: {
