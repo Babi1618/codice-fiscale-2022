@@ -1,27 +1,38 @@
 import React from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import InputText from './InputText'
+import Sesso from './Sesso'
 
 const CodiceFiscale = () => {
 	const onSubmit = (data: any) => {
 		console.log(data)
 	}
 
-	const methods = useForm()
+	const methods = useForm({
+		mode: "onChange"
+	})
+
 	return (
 		<div className='container'>
 			<h1>Calcolo codice Fiscale</h1>
 			<FormProvider {...methods}>
-				<form onSubmit={methods.handleSubmit(onSubmit)}>
+				<form onClick={methods.handleSubmit(onSubmit)}>
 					<div className='row'>
-						<div className='col-5'>Cognome
-							<InputText />
+						<div className='col-5 mb-3'>Cognome
+							<InputText
+								text="Cognome"
+								name="cognome" />
 						</div>
 						<div className='col-5'>Nome
-
+							<InputText
+								text="Nome"
+								name="nome" />
 						</div>
-						<div className='col-2'>Sesso
-
+						<div className='col-2'>
+							<Sesso
+								text="Sesso"
+								name="sesso"
+							/>
 						</div>
 					</div>
 					<div className='row'>
@@ -34,7 +45,7 @@ const CodiceFiscale = () => {
 					</div>
 					<div className='row justify-content-center'>
 						<div className='col'>
-							<button>Calcola</button>
+							<button type="submit">Calcola</button>
 						</div>
 
 					</div>

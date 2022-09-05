@@ -1,13 +1,17 @@
-import React from 'react'
 import { useFormContext } from 'react-hook-form'
 
-const InputText = () => {
+interface IInputText {
+	name: string,
+	text: string
+}
+
+const InputText = (props: IInputText) => {
 	const { register } = useFormContext()
 	return (
-		<div>InputText
-			<input type="text" {...register("cognome")} />
-
-		</div>
+		<>
+			<label htmlFor={props.name} className="form-label">{props.text}</label>
+			<input type="text" className="form-control" id={props.name} {...register(props.name)} />
+		</>
 	)
 }
 
