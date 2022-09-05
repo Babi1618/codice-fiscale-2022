@@ -1,42 +1,45 @@
 import React from 'react'
-import { useForm } from 'react-hook-form'
+import { FormProvider, useForm } from 'react-hook-form'
+import InputText from './InputText'
 
 const CodiceFiscale = () => {
-	const { handleSubmit, register } = useForm()
-	const onClickCalcola = (data: any) => {
+	const onSubmit = (data: any) => {
 		console.log(data)
 	}
+
+	const methods = useForm()
 	return (
 		<div className='container'>
 			<h1>Calcolo codice Fiscale</h1>
-			<form onSubmit={handleSubmit(onClickCalcola)}>
-				<div className='row'>
-					<div className='col-5'>Cognome
-						<input defaultValue="test" {...register("cognome")} />
+			<FormProvider {...methods}>
+				<form onSubmit={methods.handleSubmit(onSubmit)}>
+					<div className='row'>
+						<div className='col-5'>Cognome
+							<InputText />
+						</div>
+						<div className='col-5'>Nome
+
+						</div>
+						<div className='col-2'>Sesso
+
+						</div>
 					</div>
-					<div className='col-5'>Nome
+					<div className='row'>
+						<div className='col-6'>Luogo Nascita
+
+						</div>
+						<div className='col-6'>Data Nascita
+
+						</div>
+					</div>
+					<div className='row justify-content-center'>
+						<div className='col'>
+							<button>Calcola</button>
+						</div>
 
 					</div>
-					<div className='col-2'>Sesso
-
-					</div>
-				</div>
-				<div className='row'>
-					<div className='col-6'>Luogo Nascita
-
-					</div>
-					<div className='col-6'>Data Nascita
-
-					</div>
-				</div>
-				<div className='row justify-content-center'>
-					<div className='col'>
-						<button>Calcola</button>
-					</div>
-
-				</div>
-			</form>
-
+				</form>
+			</FormProvider>
 		</div>
 	)
 }
