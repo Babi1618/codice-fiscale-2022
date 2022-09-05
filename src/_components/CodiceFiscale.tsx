@@ -8,9 +8,7 @@ const CodiceFiscale = () => {
 		console.log(data)
 	}
 
-	const methods = useForm({
-		mode: "onChange"
-	})
+	const methods = useForm({})
 
 	return (
 		<div className='container'>

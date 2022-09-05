@@ -10,8 +10,8 @@ const Sesso = (props: IInputSelect) => {
 	return (
 		<>
 			<label htmlFor={props.name} className="form-label">{props.text}</label>
-			<select  className="form-select" aria-label="Default select example" {...register(props.name)}>
-				<option selected>Selezionare</option>
+			<select className="form-select" aria-label="Default select example" {...register(props.name)}>
+				<option value="">Selezionare</option>
 				<option value="M">Maschile</option>
 				<option value="F">Femminile</option>
 			</select>

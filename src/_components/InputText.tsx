@@ -10,7 +10,7 @@ const InputText = (props: IInputText) => {
 	return (
 		<>
 			<label htmlFor={props.name} className="form-label">{props.text}</label>
-			<input type="text" className="form-control" id={props.name} {...register(props.name)} />
+			<input type="text" className="form-control" id={props.name} {...register(props.name)} onChange={(e) => console.log(e.target.value)} />
 		</>
 	)
 }
