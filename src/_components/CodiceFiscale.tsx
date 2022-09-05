@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 
 const CodiceFiscale = () => {
-	const { handleSubmit } = useForm()
+	const { handleSubmit, register } = useForm()
 	const onClickCalcola = (data: any) => {
 		console.log(data)
 	}
@@ -12,7 +12,7 @@ const CodiceFiscale = () => {
 			<form onSubmit={handleSubmit(onClickCalcola)}>
 				<div className='row'>
 					<div className='col-5'>Cognome
-
+						<input defaultValue="test" {...register("cognome")} />
 					</div>
 					<div className='col-5'>Nome
 
