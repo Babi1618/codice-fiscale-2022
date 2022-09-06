@@ -22,7 +22,6 @@ export const codiceFiscaleSlice = createSlice({
 	},
 	extraReducers: {
 		[getRegioniAsync.fullfilled]: (state, action) => {
-			console.log("prova")
 			state.lista_regioni = action.payload.lista_province
 		},
 	},
