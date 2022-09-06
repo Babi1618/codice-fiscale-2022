@@ -11,17 +11,17 @@ const CodiceFiscale = () => {
 	const methods = useForm({})
 
 	return (
-		<div className='container'>
+		<div className='cu7ontainer'>
 			<h1>Calcolo codice Fiscale</h1>
 			<FormProvider {...methods}>
 				<form onClick={methods.handleSubmit(onSubmit)}>
 					<div className='row'>
-						<div className='col-5 mb-3'>Cognome
+						<div className='col-5 mb-3'>
 							<InputText
 								text="Cognome"
 								name="cognome" />
 						</div>
-						<div className='col-5'>Nome
+						<div className='col-5'>
 							<InputText
 								text="Nome"
 								name="nome" />
