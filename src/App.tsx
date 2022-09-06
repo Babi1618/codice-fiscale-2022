@@ -5,7 +5,7 @@ import CodiceFiscale from './_components/CodiceFiscale';
 function App() {
 	const { codiceFiscale_calcolato } = useCalcolaCodiceFiscale()
 	useEffect(() => {
-		console.log(codiceFiscale_calcolato())
+		// console.log(codiceFiscale_calcolato())
 	}, [])
 	return (
 		< >

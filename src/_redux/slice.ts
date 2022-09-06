@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
-const sliceName = "codiceFiscale"
+import { getRegioniAsync } from '../_helpers/asyncThunk'
 
+const sliceName = "codiceFiscale"
 export const codiceFiscaleSlice = createSlice({
 	name: sliceName,
 	initialState: {
@@ -12,6 +13,7 @@ export const codiceFiscaleSlice = createSlice({
 			comune_nascita: "",
 			stato_estero_nascita: "",
 		},
+		lista_regioni: []
 	},
 	reducers: {
 		changeDatiPersonali: (state, action) => {
@@ -19,10 +21,14 @@ export const codiceFiscaleSlice = createSlice({
 		}
 	},
 	extraReducers: {
-
+		[getRegioniAsync.fullfilled]: (state, action) => {
+			console.log("prova")
+			state.lista_regioni = action.payload.lista_province
+		},
 	},
 
 })
 export const { changeDatiPersonali } = codiceFiscaleSlice.actions
 export const datiPersonali = (state: any) => state[sliceName].dati_personali
+export const listaRegioni = (state: any) => state[sliceName].lista_regioni
 export default codiceFiscaleSlice.reducer

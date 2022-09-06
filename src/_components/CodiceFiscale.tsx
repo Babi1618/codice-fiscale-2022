@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import InputText from './InputText'
 import Sesso from './Sesso'
-
+import { getRegioniAsync } from '../_helpers/asyncThunk'
+import { useDispatch, useSelector } from 'react-redux'
+import { listaRegioni } from '../_redux/slice'
 const CodiceFiscale = () => {
 	const onSubmit = (data: any) => {
 		console.log(data)
 	}
-
+	const lista_regioni = useSelector(listaRegioni)
 	const methods = useForm({})
+	const dispatch = useDispatch()
+	useEffect(() => { dispatch(getRegioniAsync()) }, [])
+	useEffect(() => { console.log(lista_regioni) }, [lista_regioni])
 
 	return (
 		<div className='cu7ontainer'>

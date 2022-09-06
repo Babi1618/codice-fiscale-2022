@@ -2,10 +2,7 @@ import { useFormContext } from 'react-hook-form'
 import { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import { changeDatiPersonali, datiPersonali } from '../_redux/slice'
-interface IInputText {
-	name: string,
-	text: string
-}
+import { IInputText } from '../_models/IInput'
 
 const InputText = (props: IInputText) => {
 	const { register } = useFormContext()
@@ -15,7 +12,7 @@ const InputText = (props: IInputText) => {
 	const handleChange = (e: any) => {
 		dispatch(changeDatiPersonali({ ...dati_personali, [e.target.name]: e.target.value }))
 	}
-	useEffect(() => { console.log(dati_personali) }, [dati_personali])
+	// useEffect(() => { console.log(dati_personali) }, [dati_personali])
 
 	return (
 		<>
