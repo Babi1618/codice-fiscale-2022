@@ -2,7 +2,7 @@ export const useCalcolaCodiceFiscale = () => {
 	const dati_personali = {
 		nome: "Gino",
 		cognome: "Rossi",
-		sesso: "M",
+		genere: "M",
 		data_nascita: "15/05/1985",
 		comune_o_stato_estero_nascita: "A944",
 	}
@@ -59,12 +59,12 @@ export const useCalcolaCodiceFiscale = () => {
 			}
 		}
 	}
-	const data_nascita_calcola = (input_data_nascita: string, input_sesso: string) => {
+	const data_nascita_calcola = (input_data_nascita: string, input_genere: string) => {
 		let output_data_nascita: any = []
 		if (input_data_nascita !== null) {
 			let data_nascita: any = input_data_nascita.split("/")
 			let giorno: any = String(data_nascita[0])
-			if (input_sesso === "F") {
+			if (input_genere === "F") {
 				giorno = parseInt(giorno) + 40
 			}
 			giorno = String(giorno).split("")
@@ -106,7 +106,7 @@ export const useCalcolaCodiceFiscale = () => {
 		let carattere_controllo = "";
 		let nome = nome_calcola(dati_personali.nome)
 		let cognome = cognome_calcola(dati_personali.cognome)
-		let data_nascita = data_nascita_calcola(dati_personali.data_nascita, dati_personali.sesso)
+		let data_nascita = data_nascita_calcola(dati_personali.data_nascita, dati_personali.genere)
 		let comune_o_stato_estero_nascita = dati_personali.comune_o_stato_estero_nascita.toUpperCase().split("")
 		let dati: any = cognome.concat(nome).concat(data_nascita).concat(comune_o_stato_estero_nascita)
 		// console.log("dati ", dati)
@@ -336,7 +336,7 @@ export const useCalcolaCodiceFiscale = () => {
 	const codiceFiscale_calcolato = () => {
 		let nome = nome_calcola(dati_personali.nome)
 		let cognome = cognome_calcola(dati_personali.cognome)
-		let data_nascita = data_nascita_calcola(dati_personali.data_nascita, dati_personali.sesso)
+		let data_nascita = data_nascita_calcola(dati_personali.data_nascita, dati_personali.genere)
 		let comune_o_stato_estero_nascita = dati_personali.comune_o_stato_estero_nascita.toUpperCase().split("")
 		let carattere_controllo = CIN_calcola()
 		let dati: any = cognome.concat(nome).concat(data_nascita).concat(comune_o_stato_estero_nascita).concat(carattere_controllo)

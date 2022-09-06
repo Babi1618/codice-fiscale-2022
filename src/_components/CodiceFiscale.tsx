@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import InputText from './InputText'
-import Sesso from './Sesso'
+import InputSelect from './InputSelect'
 import { getRegioniAsync } from '../_helpers/asyncThunk'
 import { useDispatch, useSelector } from 'react-redux'
 import { listaRegioni } from '../_redux/slice'
@@ -10,6 +10,8 @@ const CodiceFiscale = () => {
 		console.log(data)
 	}
 	const lista_regioni = useSelector(listaRegioni)
+	const listaGenere = [{ text: "Maschile", value: "M" }, { text: "Femminile", value: "F" }]
+
 	const methods = useForm({})
 	const dispatch = useDispatch()
 	useEffect(() => { dispatch(getRegioniAsync()) }, [])
@@ -32,9 +34,10 @@ const CodiceFiscale = () => {
 								name="nome" />
 						</div>
 						<div className='col-2'>
-							<Sesso
-								text="Sesso"
-								name="sesso"
+							<InputSelect
+								text="Genere"
+								name="genere"
+								options={listaGenere}
 							/>
 						</div>
 					</div>
