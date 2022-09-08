@@ -23,8 +23,9 @@ const InputSelect = (props: IInputSelect) => {
 		dispatch(changeDatiPersonali({ ...dati_personali, [e.name]: e.value }))
 	}
 	useEffect(() => {
-		console.log(dati_personali)
+		// console.log(dati_personali)
 	}, [dati_personali])
+	
 	return (
 		<>
 			<label htmlFor={props.name} className="form-label">{props.text}</label>

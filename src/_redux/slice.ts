@@ -15,9 +15,16 @@ export const codiceFiscaleSlice = createSlice({
 			comune_nascita: "",
 			stato_estero_nascita: "",
 		},
-		lista_regioni: [],
-		loadingRegioni: false,
-		getRegioniOk: false,
+		regioni: {
+			lista_regioni: [],
+			loadingRegioni: false,
+			getRegioniOk: false,
+		},
+		province: {
+			lista_province: [],
+			loadingprovince: false,
+			getprovinceOk: false,
+		}
 	},
 	reducers: {
 		changeDatiPersonali: (state, action) => {
@@ -26,21 +33,21 @@ export const codiceFiscaleSlice = createSlice({
 	},
 	extraReducers: {
 		[getRegioniAsync.pending]: (state) => {
-			state.loadingRegioni = true
+			state.regioni.loadingRegioni = true
 		},
 		[getRegioniAsync.rejected]: (state) => {
-			state.loadingRegioni = false
-			state.getRegioniOk = false
+			state.regioni.loadingRegioni = false
+			state.regioni.getRegioniOk = false
 		},
 		[getRegioniAsync.fulfilled]: (state, action) => {
-			state.loadingRegioni = false
-			state.getRegioniOk = true
-			state.lista_regioni = action.payload.lista_regioni
+			state.regioni.loadingRegioni = false
+			state.regioni.getRegioniOk = true
+			state.regioni.lista_regioni = action.payload.lista_regioni
 		},
 	},
 
 })
 export const { changeDatiPersonali } = codiceFiscaleSlice.actions
 export const datiPersonali = (state: any) => state[sliceName].dati_personali
-export const listaRegioni = (state: any) => state[sliceName].lista_regioni
+export const listaRegioni = (state: any) => state[sliceName].regioni.lista_regioni
 export default codiceFiscaleSlice.reducer
