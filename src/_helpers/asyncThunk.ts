@@ -6,6 +6,7 @@ export const getRegioniAsync: any = createAsyncThunk("cf/regioni",
 		if (response.ok) {
 			const regioni = await response.json();
 			const lista_regioni = regioni
+			// console.log(lista_regioni)
 			return { lista_regioni }
 		}
 	})

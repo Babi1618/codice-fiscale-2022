@@ -9,12 +9,15 @@ const CodiceFiscale = () => {
 	const onSubmit = (data: any) => {
 		console.log(data)
 	}
+
 	const lista_regioni = useSelector(listaRegioni)
 	const listaGenere = [{ text: "Maschile", value: "M" }, { text: "Femminile", value: "F" }]
 
 	const methods = useForm({})
 	const dispatch = useDispatch()
+
 	useEffect(() => { dispatch(getRegioniAsync()) }, [])
+
 	useEffect(() => { console.log(lista_regioni) }, [lista_regioni])
 
 	return (
