@@ -5,13 +5,13 @@ import InputSelect from './InputSelect'
 import { getRegioniAsync } from '../_helpers/asyncThunk'
 import { useDispatch, useSelector } from 'react-redux'
 import { listaRegioni } from '../_redux/slice'
+import { listaGenere } from '../_constants/lista_genere'
 const CodiceFiscale = () => {
 	const onSubmit = (data: any) => {
 		console.log(data)
 	}
 
 	const lista_regioni = useSelector(listaRegioni)
-	const listaGenere = [{ text: "Maschile", value: "M" }, { text: "Femminile", value: "F" }]
 
 	const methods = useForm({})
 	const dispatch = useDispatch()
