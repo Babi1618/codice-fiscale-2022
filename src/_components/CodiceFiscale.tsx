@@ -2,9 +2,9 @@ import { useEffect } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import InputText from './InputText'
 import InputSelect from './InputSelect'
-import { getRegioniAsync } from '../_helpers/asyncThunk'
+import { getProvinceAsync, getRegioniAsync } from '../_helpers/asyncThunk'
 import { useDispatch, useSelector } from 'react-redux'
-import { listaRegioni } from '../_redux/slice'
+import { datiPersonali, listaProvince, listaRegioni } from '../_redux/slice'
 import { listaGenere } from '../_constants/lista_genere'
 
 const CodiceFiscale = () => {
@@ -14,16 +14,25 @@ const CodiceFiscale = () => {
 	}
 
 	const lista_regioni = useSelector(listaRegioni)
-
+	const lista_province = useSelector(listaProvince)
+	const dati_personali = useSelector(datiPersonali)
 	const methods = useForm({})
 	const dispatch = useDispatch()
 
-	useEffect(() => { dispatch(getRegioniAsync()) }, [])
+	useEffect(() => {
+		dispatch(getRegioniAsync())
 
-	// useEffect(() => { console.log(lista_regioni) }, [lista_regioni])
+	}, [])
+
+	useEffect(() => {
+		console.log(dati_personali.regione_nascita)
+		dispatch(getProvinceAsync())
+	}, [dati_personali.regione_nascita])
+
+	useEffect(() => { console.log(lista_province) }, [lista_province])
 
 	return (
-		<div className='cu7ontainer'>
+		<div className='container'>
 			<h1>Calcolo codice Fiscale</h1>
 			<FormProvider {...methods}>
 				<form onClick={methods.handleSubmit(onSubmit)}>
@@ -43,6 +52,8 @@ const CodiceFiscale = () => {
 								text="Genere"
 								name="genere"
 								options={listaGenere}
+								disabled={false}
+
 							/>
 						</div>
 					</div>
@@ -52,10 +63,18 @@ const CodiceFiscale = () => {
 								text="Regione"
 								name="regione_nascita"
 								options={lista_regioni}
+								disabled={false}
+
 							/>
 						</div>
-						<div className='col-6'>Provincia Nascita
-
+						<div className='col-6'>
+							<InputSelect
+								text="Provincis di Nascita"
+								name="provincia_nascita"
+								options={lista_province}
+								disabled={false}
+							// disabled={dati_personali.regione_nascita ? false : true}
+							/>
 						</div>
 					</div>
 					<div className='row'>
