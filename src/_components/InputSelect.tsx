@@ -13,7 +13,7 @@ const InputSelect = (props: IInputSelect) => {
 		<>
 			<label htmlFor={props.name} className="form-label">{props.text}</label>
 			<br />
-			<select className="form-select" aria-label="Default select example" {...register(props.name)}>
+			<select className="form-select" aria-label="Default select example" {...register(props.name)} onChange={(e) => console.log(e.target.value)}>
 				<option value="">--seleziona--</option>
 				{
 					props.options.map((el: any) => {

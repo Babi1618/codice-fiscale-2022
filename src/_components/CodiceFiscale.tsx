@@ -6,7 +6,9 @@ import { getRegioniAsync } from '../_helpers/asyncThunk'
 import { useDispatch, useSelector } from 'react-redux'
 import { listaRegioni } from '../_redux/slice'
 import { listaGenere } from '../_constants/lista_genere'
+
 const CodiceFiscale = () => {
+
 	const onSubmit = (data: any) => {
 		console.log(data)
 	}
@@ -45,7 +47,19 @@ const CodiceFiscale = () => {
 						</div>
 					</div>
 					<div className='row'>
-						<div className='col-6'>Luogo Nascita
+						<div className='col-6'>
+							<InputSelect
+								text="Regione"
+								name="Regione"
+								options={lista_regioni}
+							/>
+						</div>
+						<div className='col-6'>Provincia Nascita
+
+						</div>
+					</div>
+					<div className='row'>
+						<div className='col-6'>Comune Nascita
 
 						</div>
 						<div className='col-6'>Data Nascita
