@@ -10,6 +10,8 @@ export const codiceFiscaleSlice = createSlice({
 			nome: "",
 			genere: "",
 			data_nascita: null,
+			regione_nascita: "",
+			provincia_nascita: "",
 			comune_nascita: "",
 			stato_estero_nascita: "",
 		},

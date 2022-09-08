@@ -10,7 +10,7 @@ import { listaGenere } from '../_constants/lista_genere'
 const CodiceFiscale = () => {
 
 	const onSubmit = (data: any) => {
-		console.log(data)
+		// console.log(data)
 	}
 
 	const lista_regioni = useSelector(listaRegioni)
@@ -20,7 +20,7 @@ const CodiceFiscale = () => {
 
 	useEffect(() => { dispatch(getRegioniAsync()) }, [])
 
-	useEffect(() => { console.log(lista_regioni) }, [lista_regioni])
+	// useEffect(() => { console.log(lista_regioni) }, [lista_regioni])
 
 	return (
 		<div className='cu7ontainer'>
@@ -50,7 +50,7 @@ const CodiceFiscale = () => {
 						<div className='col-6'>
 							<InputSelect
 								text="Regione"
-								name="Regione"
+								name="regione_nascita"
 								options={lista_regioni}
 							/>
 						</div>
