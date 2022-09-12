@@ -34,6 +34,9 @@ export const codiceFiscaleSlice = createSlice({
 	reducers: {
 		changeDatiPersonali: (state, action) => {
 			state.dati_personali = action.payload
+		},
+		deleteListaComuni: (state) => {
+			state.comuni.lista_comuni = []
 		}
 	},
 	extraReducers: {
@@ -82,7 +85,7 @@ export const codiceFiscaleSlice = createSlice({
 	},
 
 })
-export const { changeDatiPersonali } = codiceFiscaleSlice.actions
+export const { changeDatiPersonali, deleteListaComuni } = codiceFiscaleSlice.actions
 export const datiPersonali = (state: any) => state[sliceName].dati_personali
 export const listaRegioni = (state: any) => state[sliceName].regioni.lista_regioni
 export const listaProvince = (state: any) => state[sliceName].province.lista_province

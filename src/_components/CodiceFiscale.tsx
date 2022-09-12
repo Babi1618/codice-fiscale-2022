@@ -4,7 +4,7 @@ import InputText from './InputText'
 import InputSelect from './InputSelect'
 import { getComuniAsync, getProvinceAsync, getRegioniAsync } from '../_helpers/asyncThunk'
 import { useDispatch, useSelector } from 'react-redux'
-import { datiPersonali, listaComuni, listaProvince, listaRegioni } from '../_redux/slice'
+import { changeDatiPersonali, datiPersonali, deleteListaComuni, listaComuni, listaProvince, listaRegioni } from '../_redux/slice'
 import { listaGenere } from '../_constants/lista_genere'
 
 const CodiceFiscale = () => {
@@ -22,21 +22,24 @@ const CodiceFiscale = () => {
 
 	useEffect(() => {
 		dispatch(getRegioniAsync())
-
 	}, [])
 
 	useEffect(() => {
 		if (dati_personali.regione_nascita !== null) {
 			dispatch(getProvinceAsync(dati_personali.regione_nascita))
 		}
+		dispatch(changeDatiPersonali({ ...dati_personali, provincia_nascita: null, comune_nascita: null }))
 	}, [dati_personali.regione_nascita])
+
 	useEffect(() => {
 		if (dati_personali.provincia_nascita !== null) {
 			dispatch(getComuniAsync(dati_personali.provincia_nascita))
 		}
+		dispatch(changeDatiPersonali({ ...dati_personali, comune_nascita: null }))
+		dispatch(deleteListaComuni())
 	}, [dati_personali.provincia_nascita])
 
-	// useEffect(() => { console.log(dati_personali) }, [dati_personali])
+	// useEffect(() => { console.log(lista_comuni) }, [lista_comuni])
 
 	return (
 		<div className='container'>
