@@ -2,9 +2,9 @@ import { useEffect } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import InputText from './InputText'
 import InputSelect from './InputSelect'
-import { getProvinceAsync, getRegioniAsync } from '../_helpers/asyncThunk'
+import { getComuniAsync, getProvinceAsync, getRegioniAsync } from '../_helpers/asyncThunk'
 import { useDispatch, useSelector } from 'react-redux'
-import { datiPersonali, listaProvince, listaRegioni } from '../_redux/slice'
+import { datiPersonali, listaComuni, listaProvince, listaRegioni } from '../_redux/slice'
 import { listaGenere } from '../_constants/lista_genere'
 
 const CodiceFiscale = () => {
@@ -15,6 +15,7 @@ const CodiceFiscale = () => {
 
 	const lista_regioni = useSelector(listaRegioni)
 	const lista_province = useSelector(listaProvince)
+	const lista_comuni = useSelector(listaComuni)
 	const dati_personali = useSelector(datiPersonali)
 	const methods = useForm({})
 	const dispatch = useDispatch()
@@ -25,13 +26,18 @@ const CodiceFiscale = () => {
 	}, [])
 
 	useEffect(() => {
-		// console.log(dati_personali.regione_nascita)
 		if (dati_personali.regione_nascita !== null) {
 			dispatch(getProvinceAsync(dati_personali.regione_nascita))
 		}
 	}, [dati_personali.regione_nascita])
+	useEffect(() => {
+		// console.log(dati_personali.provincia_nascita)
+		if (dati_personali.provincia_nascita !== null) {
+			dispatch(getComuniAsync(dati_personali.provincia_nascita))
+		}
+	}, [dati_personali.provincia_nascita])
 
-	useEffect(() => { console.log(lista_province) }, [lista_province])
+	// useEffect(() => { console.log(dati_personali) }, [dati_personali])
 
 	return (
 		<div className='container'>
@@ -82,7 +88,7 @@ const CodiceFiscale = () => {
 							<InputSelect
 								text="Comune di Nascita"
 								name="comune_nascita"
-								options={[]}
+								options={lista_comuni}
 								disabled={false}
 							// disabled={dati_personali.regione_nascita ? false : true}
 							/>
