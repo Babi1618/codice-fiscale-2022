@@ -31,7 +31,6 @@ const CodiceFiscale = () => {
 		}
 	}, [dati_personali.regione_nascita])
 	useEffect(() => {
-		// console.log(dati_personali.provincia_nascita)
 		if (dati_personali.provincia_nascita !== null) {
 			dispatch(getComuniAsync(dati_personali.provincia_nascita))
 		}
@@ -61,7 +60,6 @@ const CodiceFiscale = () => {
 								name="genere"
 								options={listaGenere}
 								disabled={false}
-
 							/>
 						</div>
 					</div>
@@ -72,7 +70,6 @@ const CodiceFiscale = () => {
 								name="regione_nascita"
 								options={lista_regioni}
 								disabled={false}
-
 							/>
 						</div>
 						<div className='col-4'>
@@ -80,8 +77,8 @@ const CodiceFiscale = () => {
 								text="Provincia di Nascita"
 								name="provincia_nascita"
 								options={lista_province}
-								disabled={false}
-							// disabled={dati_personali.regione_nascita ? false : true}
+								// disabled={false}
+								disabled={dati_personali.regione_nascita ? false : true}
 							/>
 						</div>
 						<div className='col-4'>
@@ -89,8 +86,8 @@ const CodiceFiscale = () => {
 								text="Comune di Nascita"
 								name="comune_nascita"
 								options={lista_comuni}
-								disabled={false}
-							// disabled={dati_personali.regione_nascita ? false : true}
+								// disabled={false}
+								disabled={dati_personali.provincia_nascita ? false : true}
 							/>
 						</div>
 					</div>

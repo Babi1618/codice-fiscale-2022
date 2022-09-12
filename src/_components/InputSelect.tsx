@@ -5,7 +5,6 @@ import { IInputSelect, ISelectData } from '../_models/ISelect'
 import { changeDatiPersonali, datiPersonali } from '../_redux/slice'
 
 
-
 const InputSelect = (props: IInputSelect) => {
 	const { register } = useFormContext()
 	const dati_personali = useSelector(datiPersonali)

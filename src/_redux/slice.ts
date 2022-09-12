@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getProvinceAsync, getRegioniAsync } from '../_helpers/asyncThunk'
+import { getComuniAsync, getProvinceAsync, getRegioniAsync } from '../_helpers/asyncThunk'
 
 const sliceName = "codiceFiscale"
 export const codiceFiscaleSlice = createSlice({
@@ -11,8 +11,8 @@ export const codiceFiscaleSlice = createSlice({
 			genere: "",
 			data_nascita: null,
 			regione_nascita: null,
-			provincia_nascita: "",
-			comune_nascita: "",
+			provincia_nascita: null,
+			comune_nascita: null,
 			stato_estero_nascita: "",
 		},
 		regioni: {
@@ -64,6 +64,21 @@ export const codiceFiscaleSlice = createSlice({
 			// state.getProvinceOk = true
 			state.province.lista_province = action.payload.lista_province;
 		},
+		[getComuniAsync.pending]: (state) => {
+			// console.log("Comuni get Loading...");
+			// state.loadingComuni = true
+		},
+		[getComuniAsync.rejected]: (state) => {
+			// console.log("Comuni get Rejected...");
+			// state.loadingComuni = false
+			// state.getComuniOk = false
+		},
+		[getComuniAsync.fulfilled]: (state, action) => {
+			// console.log("Comuni get Success...");
+			// state.loadingComuni = false
+			// state.getComuniOk = true
+			state.comuni.lista_comuni = action.payload.lista_comuni;
+		},
 	},
 
 })
@@ -71,4 +86,6 @@ export const { changeDatiPersonali } = codiceFiscaleSlice.actions
 export const datiPersonali = (state: any) => state[sliceName].dati_personali
 export const listaRegioni = (state: any) => state[sliceName].regioni.lista_regioni
 export const listaProvince = (state: any) => state[sliceName].province.lista_province
+export const listaComuni = (state: any) => state[sliceName].comuni.lista_comuni
+
 export default codiceFiscaleSlice.reducer
