@@ -25,8 +25,10 @@ const CodiceFiscale = () => {
 	}, [])
 
 	useEffect(() => {
-		console.log(dati_personali.regione_nascita)
-		dispatch(getProvinceAsync())
+		// console.log(dati_personali.regione_nascita)
+		if (dati_personali.regione_nascita !== null) {
+			dispatch(getProvinceAsync(dati_personali.regione_nascita))
+		}
 	}, [dati_personali.regione_nascita])
 
 	useEffect(() => { console.log(lista_province) }, [lista_province])
@@ -58,7 +60,7 @@ const CodiceFiscale = () => {
 						</div>
 					</div>
 					<div className='row'>
-						<div className='col-6'>
+						<div className='col-4'>
 							<InputSelect
 								text="Regione"
 								name="regione_nascita"
@@ -67,11 +69,20 @@ const CodiceFiscale = () => {
 
 							/>
 						</div>
-						<div className='col-6'>
+						<div className='col-4'>
 							<InputSelect
-								text="Provincis di Nascita"
+								text="Provincia di Nascita"
 								name="provincia_nascita"
 								options={lista_province}
+								disabled={false}
+							// disabled={dati_personali.regione_nascita ? false : true}
+							/>
+						</div>
+						<div className='col-4'>
+							<InputSelect
+								text="Comune di Nascita"
+								name="comune_nascita"
+								options={[]}
 								disabled={false}
 							// disabled={dati_personali.regione_nascita ? false : true}
 							/>
